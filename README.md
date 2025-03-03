@@ -1,3 +1,5 @@
+Study finder aims to find relevant information about the universities in the Netherlands. There are two different jupyter notebook files for this. One is for finding the locations of the universities on a map, and the other file contains tables that contain relevant information.
+
 Instructions on how to run the jupyter notebook files
 
 The map file:
