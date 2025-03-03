@@ -1,0 +1,270 @@
+@prefix : <http://www.semanticweb.org/user/ontologies/Project#> .
+@prefix ex: <http://www.semanticweb.org/user/ontologies/Project/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/user/ontologies/Project> .
+
+<http://www.semanticweb.org/user/ontologies/Project> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/Project/hasAFieldOfStudy
+ex:hasAFieldOfStudy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/hasAFormOfEducation
+ex:hasAFormOfEducation rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/hasATypeOfInstitution
+ex:hasATypeOfInstitution rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/hasATypeOfProgrammes
+ex:hasATypeOfProgrammes rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/hasDescription
+ex:hasDescription rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/hasTopic
+ex:hasTopic rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/isLocatedAt
+ex:isLocatedAt rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/isOfferedBy
+ex:isOfferedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf ex:offers .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/isTaughtIn
+ex:isTaughtIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/offers
+ex:offers rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/requiresECT
+ex:requiresECT rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/Project/isFullTime
+ex:isFullTime rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/isPartTime
+ex:isPartTime rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/isRelatedTo
+ex:isRelatedTo rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/Project/Arts
+ex:Arts rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty ex:isRelatedTo ;
+                              owl:hasValue "Kunst_en_Cultuur"
+                            ] ;
+        rdfs:subClassOf ex:Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Description
+ex:Description rdf:type owl:Class ;
+               rdfs:subClassOf ex:Details_Of_Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Details_Of_Programme
+ex:Details_Of_Programme rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/ECT
+ex:ECT rdf:type owl:Class ;
+       rdfs:subClassOf ex:Details_Of_Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Education
+ex:Education rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:isRelatedTo ;
+                                   owl:hasValue "Onderwijs_en_Opvoeding"
+                                 ] ;
+             rdfs:subClassOf ex:Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Field_Of_Study
+ex:Field_Of_Study rdf:type owl:Class ;
+                  rdfs:subClassOf ex:Details_Of_Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Form_Of_Education
+ex:Form_Of_Education rdf:type owl:Class ;
+                     rdfs:subClassOf ex:Details_Of_Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Full_Time
+ex:Full_Time rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:isFullTime ;
+                                   owl:hasValue "true"^^xsd:boolean
+                                 ] ;
+             rdfs:subClassOf ex:Form_Of_Education .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Humanities
+ex:Humanities rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:isRelatedTo ;
+                                    owl:hasValue "Interdisciplinair"
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:isRelatedTo ;
+                                    owl:hasValue "Taal_en_Communicatie"
+                                  ] ;
+              rdfs:subClassOf ex:Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Language
+ex:Language rdf:type owl:Class ;
+            rdfs:subClassOf ex:Details_Of_Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Location
+ex:Location rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Natural_Science
+ex:Natural_Science rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty ex:isRelatedTo ;
+                                         owl:hasValue "Aarde_en_Milieu"
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ex:isRelatedTo ;
+                                         owl:hasValue "Gezondheid"
+                                       ] ;
+                   rdfs:subClassOf ex:Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Part_Time
+ex:Part_Time rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:isPartTime ;
+                                   owl:hasValue "true"^^xsd:boolean
+                                 ] ;
+             rdfs:subClassOf ex:Form_Of_Education .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Programme
+ex:Programme rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:hasAFieldOfStudy ;
+                                   owl:someValuesFrom ex:Field_Of_Study
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:hasAFormOfEducation ;
+                                   owl:someValuesFrom ex:Form_Of_Education
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:hasATypeOfProgrammes ;
+                                   owl:someValuesFrom ex:Type_Of_Programme
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:isOfferedBy ;
+                                   owl:someValuesFrom ex:University
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:isTaughtIn ;
+                                   owl:someValuesFrom ex:Language
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:requiresECT ;
+                                   owl:someValuesFrom ex:ECT
+                                 ] .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Social_Science
+ex:Social_Science rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty ex:isRelatedTo ;
+                                        owl:hasValue "Economie_en_Bedrijf"
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty ex:isRelatedTo ;
+                                        owl:hasValue "Gedrag_en_Maatschappij"
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty ex:isRelatedTo ;
+                                        owl:hasValue "Recht_en_Bestuur"
+                                      ] ;
+                  rdfs:subClassOf ex:Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Technology
+ex:Technology rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:isRelatedTo ;
+                                    owl:hasValue "Exact_en_Informatica"
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:isRelatedTo ;
+                                    owl:hasValue "Techniek"
+                                  ] ;
+              rdfs:subClassOf ex:Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Type_Of_Institution
+ex:Type_Of_Institution rdf:type owl:Class ;
+                       rdfs:subClassOf ex:Details_Of_Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/Type_Of_Programme
+ex:Type_Of_Programme rdf:type owl:Class ;
+                     rdfs:subClassOf ex:Details_Of_Programme .
+
+
+###  http://www.semanticweb.org/user/ontologies/Project/University
+ex:University rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:hasATypeOfInstitution ;
+                                    owl:someValuesFrom ex:Type_Of_Institution
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:isLocatedAt ;
+                                    owl:someValuesFrom ex:Location
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:offers ;
+                                    owl:someValuesFrom ex:Programme
+                                  ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/Project/Artificial_Intelligence
+ex:Artificial_Intelligence rdf:type owl:NamedIndividual ,
+                                    ex:Programme .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
